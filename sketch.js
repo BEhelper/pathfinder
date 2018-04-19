@@ -181,12 +181,12 @@ function draw() {
           openSet.push(neighbor);
         }
 
-        if (newPath) {
-          neighbor.h = heuristic(neighbor, end);
-          neighbor.f = neighbor.g + neighbor.h;
-          //path
-          neighbor.previous = current;
-        }
+        // if (newPath) {
+        neighbor.h = heuristic(neighbor, end);
+        neighbor.f = neighbor.g + neighbor.h;
+        //path
+        neighbor.previous = current;
+        // }
 
       }
 
