@@ -169,19 +169,25 @@ function draw() {
       if (!closedSet.includes(neighbor) && !neighbor.wall) {
         var tempG = current.g + 1;
 
+        var newPath = false;
         if (openSet.includes(neighbor)) {
           if (tempG < neighbor.g) {
             neighbor.g = tempG;
+            newPath = true;
           }
         } else {
           neighbor.g = tempG;
+          newPath = true;
           openSet.push(neighbor);
         }
 
-        neighbor.h = heuristic(neighbor, end);
-        neighbor.f = neighbor.g + neighbor.h;
-        //path
-        neighbor.previous = current;
+        if (newPath) {
+          neighbor.h = heuristic(neighbor, end);
+          neighbor.f = neighbor.g + neighbor.h;
+          //path
+          neighbor.previous = current;
+        }
+
       }
 
     }
