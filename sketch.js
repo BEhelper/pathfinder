@@ -39,7 +39,7 @@ function setup() {
   }
 
   for (var i = 0; i < cols; i++) {
-    for (var j = 0; j < rows.length; i++) {
+    for (var j = 0; j < rows; j++) {
       grid[i][j] = new Spot(i , j);
     }
   }
@@ -47,7 +47,7 @@ function setup() {
   start = grid[0][0];
   end = grid[cols - 1][rows - 1]
 
-  openSet.push(start)
+  openSet.push(start);
 
   console.log(grid);
 }
@@ -63,7 +63,7 @@ function draw() {
   background(0);
 
   for (var i = 0; i < cols; i++) {
-    for (var j = 0; j < rows; i++) {
+    for (var j = 0; j < rows; j++) {
       grid[i][j].show(color(255,0,0));
     }
   }
