@@ -21,8 +21,9 @@ function Spot(i , j) {
 
   this.show = function() {
     fill(255);
-    stroke(0);
-    rect(this.x * w, this.y * h, w, h)
+    // stroke(0);
+    noStroke();
+    rect(this.x * w, this.y * h, w-1, h-1)
   }
 }
 
@@ -39,7 +40,7 @@ function setup() {
 
   for (var i = 0; i < cols; i++) {
     for (var j = 0; i < rows.length; i++) {
-      grid[i][j] = new Spot;
+      grid[i][j] = new Spot(i , j);
     }
   }
 
@@ -63,8 +64,14 @@ function draw() {
 
   for (var i = 0; i < cols; i++) {
     for (var i = 0; i < rows; i++) {
-      grid[i][j].show();
+      grid[i][j].show(color(255));
     }
+  }
 
+  for (var i = 0; i < closedSet.length; i++) {
+    closedSet[i].show(color(255,0,0))
+  }
+  for (var i = 0; i < openSet.length; i++) {
+    openSet[i].show(color(0,255,0))
   }
 }
