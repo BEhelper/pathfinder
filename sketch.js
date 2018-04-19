@@ -8,6 +8,12 @@ function removeFromArray(arr, elt) {
   }
 }
 
+// second new
+function heuristic(a, b) {
+  var d = dist(a.i, a.j, b.i, b.j);
+  return d;
+}
+
 
 var cols = 5;
 var rows = 5;
@@ -105,10 +111,34 @@ function draw() {
     removeFromArray(openSet, current);
     closedSet.push(current);
 
+    // second not tested starting at 31:50
+    var neighbors = current.neighbors;
+    for (var i = 0; i < neighbors.length; i++) {
+      var neighbor = neighbors[i];
 
-  }else {
+      if (!closedSet.includes(neighbor)) {
+        var tempG = current.g + 1;
+
+        if (openSet.includes(neighbor)) {
+          if (tempG < neighbor.g) {
+            neighbor.g = tempG;
+          }
+        } else {
+          neighbor.g = tempG;
+          openSet.push(neighbor);
+        }
+
+        neighbor.h = heuristic(neighbor, end);
+        neighbor.f = neighbor.g + neighbor.h;
+      }
+
+    }
+
+
+  } else {
     //no solution
   }
+
   background(0);
 
   for (var i = 0; i < cols; i++) {
