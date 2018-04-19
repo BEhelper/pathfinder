@@ -19,8 +19,8 @@ function Spot(i , j) {
   this.g = 0;
   this.h = 0;
 
-  this.show = function() {
-    fill(255);
+  this.show = function(col) {
+    fill(col);
     // stroke(0);
     noStroke();
     rect(this.x * w, this.y * h, w-1, h-1)
