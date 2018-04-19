@@ -81,16 +81,16 @@ function Spot(i , j) {
       this.neighbors.push(grid[i][j - 1]);
     }
     if (i > 0 && j > 0) {
-      this.neighbors.push(grid[i - i][j - 1]);
+      this.neighbors.push(grid[i - 1][j - 1]);
     }
     if (i < cols - 1 && j > 0) {
-      this.neighbors.push(grid[i + i][j - 1]);
+      this.neighbors.push(grid[i + 1][j - 1]);
     }
     if (i > 0 && j < rows - 1) {
-      this.neighbors.push(grid[i - i][j + 1]);
+      this.neighbors.push(grid[i - 1][j + 1]);
     }
     if (i < cols - 1 && j < rows - 1) {
-      this.neighbors.push(grid[i + i][j + 1]);
+      this.neighbors.push(grid[i + 1][j + 1]);
     }
   }
 }
@@ -181,12 +181,12 @@ function draw() {
           openSet.push(neighbor);
         }
 
-        // if (newPath) {
+        if (newPath) {
         neighbor.h = heuristic(neighbor, end);
         neighbor.f = neighbor.g + neighbor.h;
         //path
         neighbor.previous = current;
-        // }
+        }
 
       }
 
