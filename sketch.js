@@ -27,6 +27,9 @@ var end;
 
 var w, h;
 
+//third
+var path = [];
+
 function Spot(i , j) {
   this.i = i;
   this.j = j;
@@ -34,6 +37,8 @@ function Spot(i , j) {
   this.g = 0;
   this.h = 0;
   this.neighbors = [];
+  this.previous = undefined; // not need explicitly here, but for clarity
+
   this.show = function(col) {
     fill(col);
     // stroke(0);
@@ -104,6 +109,16 @@ function draw() {
 
     var current = openSet[winner];
     if (current == end) {
+      //third
+      //find the path
+      // path = [];
+      // var temp = current;
+      // path.push(temp);
+      // while (temp.previous) {
+      //   path.push(temp.previous);
+      //   temp = temp.previous;
+      // }
+      noLoop();
       console.log("done!");
     }
 
@@ -130,6 +145,8 @@ function draw() {
 
         neighbor.h = heuristic(neighbor, end);
         neighbor.f = neighbor.g + neighbor.h;
+        //third
+        neighbor.previous = current;
       }
 
     }
@@ -152,5 +169,17 @@ function draw() {
   }
   for (var i = 0; i < openSet.length; i++) {
     openSet[i].show(color(0,255,0))
+  }
+
+  //third
+  path = [];
+  var temp = current;
+  path.push(temp);
+  while (temp.previous) {
+    path.push(temp.previous);
+    temp = temp.previous;
+  }
+  for (var i = 0; i < path.length; i++) {
+    path[i].show(color(0,0,255));
   }
 }
