@@ -39,7 +39,7 @@ function setup() {
   }
 
   for (var i = 0; i < cols; i++) {
-    for (var j = 0; i < rows.length; i++) {
+    for (var j = 0; j < rows.length; i++) {
       grid[i][j] = new Spot(i , j);
     }
   }
@@ -63,7 +63,7 @@ function draw() {
   background(0);
 
   for (var i = 0; i < cols; i++) {
-    for (var j = 0; i < rows; i++) {
+    for (var j = 0; j < rows; i++) {
       grid[i][j].show(color(255));
     }
   }
