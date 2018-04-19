@@ -41,6 +41,12 @@ function Spot(i , j) {
   this.h = 0;
   this.neighbors = [];
   this.previous = undefined; // not need explicitly here, but for clarity
+  // vid2 obsti
+  this.wall = false;
+  if (random(1) < 0.1) {
+    this.wall = true;
+  }
+
 
   this.show = function(col) {
     fill(col);
