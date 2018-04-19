@@ -47,6 +47,8 @@ function Spot(i , j) {
   // vid2 obsti
   this.wall = false;
   if (random(1) < 0.3) {
+    // could be if one of its neighbors is wall its chances increase
+    // else pretty low chances
     this.wall = true;
   }
 
@@ -77,6 +79,18 @@ function Spot(i , j) {
     }
     if (j > 0) {
       this.neighbors.push(grid[i][j - 1]);
+    }
+    if (i > 0 && j > 0) {
+      this.neighbors.push(grid[i - i][j - 1]);
+    }
+    if (i < cols - 1 && j > 0) {
+      this.neighbors.push(grid[i + i][j - 1]);
+    }
+    if (i > 0 && j < rows - 1) {
+      this.neighbors.push(grid[i - i][j + 1]);
+    }
+    if (i < cols - 1 && j < rows - 1) {
+      this.neighbors.push(grid[i + i][j + 1]);
     }
   }
 }
