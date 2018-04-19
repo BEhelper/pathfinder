@@ -10,7 +10,10 @@ function removeFromArray(arr, elt) {
 
 // second new
 function heuristic(a, b) {
-  var d = dist(a.i, a.j, b.i, b.j);
+  // var d = dist(a.i, a.j, b.i, b.j);
+  // manhatan
+  // comment out d above
+  var d = abs(a.i-b.i) + abs(a.j-b.j);
   return d;
 }
 
@@ -27,7 +30,7 @@ var end;
 
 var w, h;
 
-//third
+//path
 var path = [];
 
 function Spot(i , j) {
@@ -109,7 +112,7 @@ function draw() {
 
     var current = openSet[winner];
     if (current == end) {
-      //third
+      ////path
       //find the path
       // path = [];
       // var temp = current;
@@ -145,7 +148,7 @@ function draw() {
 
         neighbor.h = heuristic(neighbor, end);
         neighbor.f = neighbor.g + neighbor.h;
-        //third
+        //path
         neighbor.previous = current;
       }
 
@@ -171,7 +174,7 @@ function draw() {
     openSet[i].show(color(0,255,0))
   }
 
-  //third
+  //path
   path = [];
   var temp = current;
   path.push(temp);
