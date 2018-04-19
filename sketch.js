@@ -2,7 +2,7 @@
 
 var cols = 5;
 var rows = 5;
-var grid = new Array(cols)
+var grid = new Array(cols);
 
 var openSet = [];
 var closedSet = [];
@@ -64,7 +64,7 @@ function draw() {
 
   for (var i = 0; i < cols; i++) {
     for (var j = 0; j < rows; i++) {
-      grid[i][j].show(color(255));
+      grid[i][j].show(color(255,0,0));
     }
   }
 
