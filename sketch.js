@@ -18,8 +18,8 @@ function heuristic(a, b) {
 }
 
 
-var cols = 25;
-var rows = 25;
+var cols = 100;
+var rows = 100;
 var grid = new Array(cols);
 
 var openSet = [];
@@ -32,6 +32,9 @@ var w, h;
 
 //path
 var path = [];
+
+//no solution
+var nosolution = false;
 
 function Spot(i , j) {
   this.i = i;
@@ -172,6 +175,9 @@ function draw() {
 
   } else {
     //no solution
+    nosolution = true;
+    noLoop();
+    console.log("no solution");
   }
 
   background(0);
@@ -190,12 +196,15 @@ function draw() {
   }
 
   //path
-  path = [];
-  var temp = current;
-  path.push(temp);
-  while (temp.previous) {
-    path.push(temp.previous);
-    temp = temp.previous;
+  // if is no solution
+  if (!nosolution) {
+    path = [];
+    var temp = current;
+    path.push(temp);
+    while (temp.previous) {
+      path.push(temp.previous);
+      temp = temp.previous;
+    }
   }
   for (var i = 0; i < path.length; i++) {
     path[i].show(color(0,0,255));
