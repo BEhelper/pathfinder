@@ -43,7 +43,7 @@ function Spot(i , j) {
   this.previous = undefined; // not need explicitly here, but for clarity
   // vid2 obsti
   this.wall = false;
-  if (random(1) < 0.1) {
+  if (random(1) < 0.3) {
     this.wall = true;
   }
 
@@ -51,6 +51,11 @@ function Spot(i , j) {
   this.show = function(col) {
     fill(col);
     // stroke(0);
+    // vid2 obsti
+    if (this.wall) {
+      fill(0);
+    }
+
     noStroke();
     rect(this.i * w, this.j * h, w-1, h-1)
   }
@@ -98,6 +103,8 @@ function setup() {
 
   start = grid[0][0];
   end = grid[cols - 1][rows - 1]
+  start.wall = false;
+  end.wall = false;
 
   openSet.push(start);
 
@@ -140,7 +147,9 @@ function draw() {
     for (var i = 0; i < neighbors.length; i++) {
       var neighbor = neighbors[i];
 
-      if (!closedSet.includes(neighbor)) {
+      // if (!closedSet.includes(neighbor)) {
+      // vid2 obsti
+      if (!closedSet.includes(neighbor) && !neighbor.wall) {
         var tempG = current.g + 1;
 
         if (openSet.includes(neighbor)) {
