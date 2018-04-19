@@ -39,16 +39,16 @@ function Spot(i , j) {
     var i = this.i;
     var j = this.j;
     if (i < cols - 1) {
-      this.neighbors.push(grid[i + 1, j]);
+      this.neighbors.push(grid[i + 1][ j]);
     }
     if (i > 0) {
-      this.neighbors.push(grid[i - 1, j]);
+      this.neighbors.push(grid[i - 1][j]);
     }
     if (j < rows - 1) {
-      this.neighbors.push(grid[i, j + 1]);
+      this.neighbors.push(grid[i][j + 1]);
     }
     if (j > 0) {
-      this.neighbors.push(grid[i, j - 1]);
+      this.neighbors.push(grid[i][j - 1]);
     }
   }
 }
